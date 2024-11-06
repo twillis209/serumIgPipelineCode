@@ -7,10 +7,14 @@
 ##' @param z2_label character string containing the label for the squared z-score
 ##' @param p_label character string containing the label for the p-value
 ##' @param wt_label character string containing the label for the weight
-##' @importFrom data.table data.table
+##' @return data.table with updated effect estimates, standard errors, z-scores, and p-values
 ##' @author Tom Willis
+##' @import data.table
 ##' @export
 add_study <- function(dat, study_name, effect_label = 'BETA', se_label = 'SE', z2_label = 'Z2', p_label = 'P', wt_label = 'wt') {
+  if(!data.table::is.data.table(dat)) {
+    stop('dat must be a data.table')
+  }
 
   beta_study_label <- paste(effect_label, study_name, sep = '.')
   se_study_label <- paste(se_label, study_name, sep = '.')
@@ -22,9 +26,15 @@ add_study <- function(dat, study_name, effect_label = 'BETA', se_label = 'SE', z
         env = list(beta.study = beta_study_label,
                    se.study = se_study_label)
        ]
-
   } else {
     # Already have estimate for these SNPs which we need to update
+    dat[!is.na(beta), `:=` (wt = se^-2, wt.study = se.study^-2),
+        env = list(beta = effect_label,
+                   se = se_label,
+                   wt = wt_label,
+                   se.study = se_study_label,
+                   wt.study = wt_study_label)
+        ]
     dat[!is.na(beta) & !is.na(beta.study), `:=` (beta = (beta * wt + beta.study * wt.study)/(wt + wt.study), se = (wt + wt.study)^-0.5),
         env = list(beta = effect_label,
           se = se_label,
@@ -42,7 +52,7 @@ add_study <- function(dat, study_name, effect_label = 'BETA', se_label = 'SE', z
         ]
   }
 
-  dat[!is.na(beta), `:=` (z2 = (beta/se)^2, wt = se^-2),
+  dat[!is.na(beta), `:=` (z2 = (beta/se)^2),
       env = list(beta = effect_label,
                  z2 = z2_label,
                  se = se_label)
