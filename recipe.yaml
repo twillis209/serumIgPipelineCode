@@ -7,7 +7,7 @@ package:
   version: ${{ version }}
 
 source:
-  url: https://github.com/twillis209/serumIgPipelineCode/releases/download/v0.1.0/serumIgPipelineCode_0.1.0.tar.gz
+  url: https://github.com/twillis209/serumIgPipelineCode/releases/download/v${{ version }}/serumIgPipelineCode_${{ version }}.tar.gz
   sha256: 902655c5dcbfc6f726578981642c19b926bfb30fef2542c96ec1e7ed23e8652d
 
 build:
@@ -21,9 +21,9 @@ requirements:
   - r-base >= ${{ r_version }}
   - r-data.table >= 1.15
 
-#tests:
-#  - script:
-#    - Rscript -e "library('serumIgPipelineCode')"
+tests:
+  - script:
+    - Rscript -e "library('serumIgPipelineCode')"
 
 about:
   homepage: https://github.com/twillis209/serumIgPipelineCode
@@ -31,5 +31,4 @@ about:
   description: |-
     This package contains R code used to generate the results in the serum Ig paper.
   license: MIT
-  #license_file: LICENSE
   repository: https://github.com/twillis209/serumIgPipelineCode
