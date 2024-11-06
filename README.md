@@ -4,24 +4,17 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of serumIgPipelineCode is to ...
+This R package provides ancillary code for the serum Ig paper pipeline.
 
 ## Installation
 
 You can install the development version of serumIgPipelineCode like so:
 
 ``` r
-# FILL THIS IN! HOW CAN PEOPLE INSTALL YOUR DEV PACKAGE?
+devtools::install_github('twillis209/serumIgPipelineCode')
 ```
 
-## Example
-
-This is a basic example which shows you how to solve a common problem:
-
-``` r
-library(serumIgPipelineCode)
-## basic example code
-```
+This package is also available on `anaconda` on the `twillis209` channel as `r-serum-ig-pipeline-code`. 
 
 ## Development
 
@@ -58,3 +51,5 @@ rattler-build upload anaconda ../r-serum-ig-pipeline-code/linux-64/r-serum-ig-pi
 ```
 
 This depends on the `RATTLER_AUTH_FILE` environment variable pointing at a JSON file containing an access token for `anaconda.org`.
+
+Ideally I'd run the `testthat` unit tests upon installation but `rattler-build` is newfangled and there are no examples I could find to easily copy.
