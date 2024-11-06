@@ -27,11 +27,25 @@ library(serumIgPipelineCode)
 
 ### Workflow
 
+#### Building package
+
 ```sh
 Rscript -e "devtools::document()
 R CMD build .
 R CMD check serumIgPipelinecode_x.tar.gz
+```
 
+#### Building `conda` package
+
+I use `rattler-build` to do this.
+
+Full disclosure: I generated a template `recipe.yaml` using: 
+```sh
+rattler-build generate-recipe cran ggplot2
+```
+then edited that.
+
+```sh
 
 ```
 
