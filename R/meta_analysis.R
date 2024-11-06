@@ -12,8 +12,8 @@
 ##' @import data.table
 ##' @export
 add_study <- function(dat, study_name, effect_label = 'BETA', se_label = 'SE', z2_label = 'Z2', p_label = 'P', wt_label = 'wt') {
-  if(!data.table::is.data.table(dat)) {
-    stop('dat must be a data.table')
+  if (!data.table::is.data.table(dat)) {
+    stop("dat must be a data.table")
   }
 
   beta_study_label <- paste(effect_label, study_name, sep = '.')
@@ -21,9 +21,11 @@ add_study <- function(dat, study_name, effect_label = 'BETA', se_label = 'SE', z
   wt_study_label <- paste(wt_label, study_name, sep = '.')
 
   # This is the first study
-  if(!(effect_label %in% names(dat))) {
-    dat[, `:=` (effect_label = beta.study, se_label = se.study),
-        env = list(beta.study = beta_study_label,
+  if (!(effect_label %in% names(dat))) {
+    dat[, `:=` (beta = beta.study, se = se.study),
+        env = list(beta = effect_label,
+                   se = se_label,
+                   beta.study = beta_study_label,
                    se.study = se_study_label)
        ]
   } else {
