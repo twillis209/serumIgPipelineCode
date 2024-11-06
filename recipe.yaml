@@ -3,7 +3,7 @@ context:
   r_version: 4.3
 
 package:
-  name: serumIgPipelineCode
+  name: r-serum-ig-pipeline-code
   version: ${{ version }}
 
 source:
@@ -23,7 +23,7 @@ requirements:
 
 #tests:
 #  - script:
-#    - Rscript -e "library(serumIgPipelineCode)"
+#    - Rscript -e "library('serumIgPipelineCode')"
 
 about:
   homepage: https://github.com/twillis209/serumIgPipelineCode
@@ -31,4 +31,5 @@ about:
   description: |-
     This package contains R code used to generate the results in the serum Ig paper.
   license: MIT
+  #license_file: LICENSE
   repository: https://github.com/twillis209/serumIgPipelineCode
