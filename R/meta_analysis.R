@@ -11,7 +11,7 @@
 ##' @author Tom Willis
 ##' @import data.table
 ##' @export
-add_study <- function(dat, study_name, effect_label = 'BETA', se_label = 'SE', z2_label = 'Z2', p_label = 'P', wt_label = 'wt') {
+update_meta_analysis_estimates <- function(dat, study_name, effect_label = 'BETA', se_label = 'SE', z2_label = 'Z2', p_label = 'P', wt_label = 'wt') {
   if (!data.table::is.data.table(dat)) {
     stop("dat must be a data.table")
   }

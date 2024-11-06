@@ -8,3 +8,6 @@
 *.Rproj
 ..Rcheck
 .vscode
+*.swp
+*.Rcheck
+*serumIgPipelineCode_*.tar.gz
