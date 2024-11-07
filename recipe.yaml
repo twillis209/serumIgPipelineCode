@@ -24,6 +24,10 @@ requirements:
 tests:
   - script:
     - Rscript -e "library('serumIgPipelineCode')"
+    - Rscript -e "library(serumIgPipelineCode); testthat::test_package('serumIgPipelineCode')"
+    requirements:
+      run:
+      - r-testthat
 
 about:
   homepage: https://github.com/twillis209/serumIgPipelineCode
