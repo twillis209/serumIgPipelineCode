@@ -10,6 +10,7 @@
 ##' @return estimated standard deviation of Y
 ##' @importFrom stats lm coef
 ##' @author Chris Wallace
+##' @export
 sdY.est <- function(vbeta, maf, n) {
   oneover <- 1/vbeta
   nvx <- 2 * n * maf * (1-maf)

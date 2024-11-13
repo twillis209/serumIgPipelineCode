@@ -10,6 +10,7 @@
 ##' @return data.table with updated effect estimates, standard errors, z-scores, and p-values
 ##' @author Tom Willis
 ##' @import data.table
+##' @importFrom stats pchisq
 ##' @export
 update_meta_analysis_estimates <- function(dat, study_name, effect_label = 'BETA', se_label = 'SE', z2_label = 'Z2', p_label = 'P', wt_label = 'wt') {
   if (!data.table::is.data.table(dat)) {
@@ -60,7 +61,7 @@ update_meta_analysis_estimates <- function(dat, study_name, effect_label = 'BETA
                  se = se_label)
       ]
 
-  dat[!is.na(beta), p := pchisq(z2, df = 1, lower.tail = F),
+  dat[!is.na(beta), p := stats::pchisq(z2, df = 1, lower.tail = F),
       env = list(beta = effect_label,
                  p = p_label,
                  z2 = z2_label
