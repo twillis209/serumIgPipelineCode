@@ -14,13 +14,13 @@ You can install the development version of serumIgPipelineCode like so:
 devtools::install_github('twillis209/serumIgPipelineCode')
 ```
 
-This package is also available on `anaconda` on the `twillis209` channel as `r-serum-ig-pipeline-code`. 
+This package is also available on `anaconda` on the `twillis209` channel as `r-serum-ig-pipeline-code`.
 
 ## Development
 
 ### Workflow
 
-#### Building package
+#### Building package after changes
 
 ```sh
 Rscript -e "devtools::document()
@@ -32,7 +32,7 @@ R CMD check serumIgPipelinecode_x.tar.gz
 
 I use `rattler-build` to do this.
 
-Full disclosure: I generated a template `recipe.yaml` using: 
+Full disclosure: I generated a template `recipe.yaml` using:
 ```sh
 rattler-build generate-recipe cran ggplot2
 ```
@@ -51,5 +51,3 @@ rattler-build upload anaconda ../r-serum-ig-pipeline-code/linux-64/r-serum-ig-pi
 ```
 
 This depends on the `RATTLER_AUTH_FILE` environment variable pointing at a JSON file containing an access token for `anaconda.org`.
-
-Ideally I'd run the `testthat` unit tests upon installation but `rattler-build` is newfangled and there are no examples I could find to easily copy.

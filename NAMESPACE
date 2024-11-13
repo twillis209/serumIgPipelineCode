@@ -2,3 +2,5 @@
 
 export(update_meta_analysis_estimates)
 import(data.table)
+importFrom(stats,coef)
+importFrom(stats,lm)
