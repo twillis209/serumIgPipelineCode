@@ -1,4 +1,3 @@
-# Write a unit test of the meta-analysis function
 test_that("effect estimates are updated for a two-study analysis", {
   dat <- data.table::data.table(
     BETA = 1, SE = 0.1,
