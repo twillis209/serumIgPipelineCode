@@ -98,6 +98,9 @@ neglog_trans <- function(base = exp(1)){
 
 neglog10_trans <- function(){ neglog_trans(base = 10) }
 
+##' -log10 transformation of the x-axis
+##'
+##' @author Tom Willis
 ##' @importFrom scales trans_breaks trans_format math_format
 ##' @importFrom ggplot2 scale_x_continuous
 ##' @export
@@ -108,6 +111,9 @@ scale_x_neglog10 <- function(...){
                      labels = scales::trans_format(function(x) {log10(x)*-1}, scales::math_format(.x)))
 }
 
+##' -log10 transformation of the y-axis
+##'
+##' @author Tom Willis
 ##' @importFrom scales trans_breaks trans_format math_format
 ##' @importFrom ggplot2 scale_y_continuous
 ##' @export
