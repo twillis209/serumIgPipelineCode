@@ -101,6 +101,9 @@ neglog_trans <- function(base = exp(1)){
 
 ##' -log10 transformation of the x-axis
 ##'
+##' @param  ... additional arguments passed to [ggplot2::scale_x_continuous()]
+##' @return ggplot2::scale_x_continuous() with -log10 transformation
+##'
 ##' @author Tom Willis
 ##' @importFrom scales trans_breaks trans_format math_format
 ##' @importFrom ggplot2 scale_x_continuous
@@ -114,6 +117,8 @@ scale_x_neglog10 <- function(...){
 
 ##' -log10 transformation of the y-axis
 ##'
+##' @param  ... additional arguments passed to [ggplot2::scale_y_continuous()]
+##' @return ggplot2::scale_y_continuous() with -log10 transformation
 ##' @author Tom Willis
 ##' @importFrom scales trans_breaks trans_format math_format
 ##' @importFrom ggplot2 scale_y_continuous

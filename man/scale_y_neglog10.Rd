@@ -6,6 +6,12 @@
 \usage{
 scale_y_neglog10(...)
 }
+\arguments{
+\item{...}{additional arguments passed to \code{\link[ggplot2:scale_continuous]{ggplot2::scale_y_continuous()}}}
+}
+\value{
+ggplot2::scale_y_continuous() with -log10 transformation
+}
 \description{
 -log10 transformation of the y-axis
 }
