@@ -13,6 +13,7 @@
 ##' @author Tom Willis
 ##' @import data.table
 ##' @importFrom dplyr group_by summarise mutate select inner_join filter pull
+##' @importFrom stats lag
 ##' @export
 process_sumstats_for_manhattan <- function(dat, chr_col = "chromosome", bp_col = "base_pair_location", p_col = "p_value") {
 
@@ -29,7 +30,7 @@ process_sumstats_for_manhattan <- function(dat, chr_col = "chromosome", bp_col =
   data_cum <- dat %>%
     dplyr::group_by(chr) %>%
     dplyr::summarise(max_bp = max(bp)) %>%
-    dplyr::mutate(bp_add = lag(cumsum(as.numeric(max_bp)), default = 0)) %>%
+    dplyr::mutate(bp_add = stats::lag(cumsum(as.numeric(max_bp)), default = 0)) %>%
     dplyr::select(chr, bp_add)
 
   data <- dat %>%
