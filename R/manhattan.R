@@ -87,6 +87,8 @@ draw_manhattan <- function(processed_sumstats, palette = c("#E69F00", "#56B4E9",
   ggplot2::ggtitle(title)
 }
 
+##' 
+##' @param base base of the logarithm
 ##' @importFrom scales trans_new
 neglog_trans <- function(base = exp(1)){
   scales::trans_new("neglog",
@@ -96,6 +98,7 @@ neglog_trans <- function(base = exp(1)){
             )
 }
 
+##' @param base base of the logarithm
 neglog10_trans <- function(){ neglog_trans(base = 10) }
 
 ##' -log10 transformation of the x-axis

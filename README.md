@@ -24,6 +24,7 @@ This package is also available on `anaconda` on the `twillis209` channel as `r-s
 
 ```sh
 Rscript -e "devtools::document()
+Rscript -e "attachment::att_amend_desc()"
 R CMD build .
 R CMD check serumIgPipelinecode_x.tar.gz
 ```
