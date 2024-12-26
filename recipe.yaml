@@ -29,8 +29,9 @@ requirements:
   - r-scales
 tests:
 - script:
-  # TODO this doesn't work because the package is not installed!
-  - Rscript -e "library('serumIgPipelineCode')"
+  # TODO I get a warning about the package not being installed from testthat: No installed testthat tests found for serumIgPipelineCode
+  # TODO fix is apparently to put tests in inst, not sure how to automate this
+  - Rscript -e "library('serumIgPipelineCode');"
   - Rscript -e "library(serumIgPipelineCode); testthat::test_package('serumIgPipelineCode')"
   requirements:
     run: 
