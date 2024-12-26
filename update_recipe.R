@@ -8,20 +8,19 @@ recipe_path <- "recipe.yaml"
 
 # Load DESCRIPTION
 desc_file <- desc::desc(file = description_path)
-package_name <- desc_file$get("Package")
 version <- desc_file$get("Version")
 
 # Load and update recipe.yaml
 recipe <- read_yaml(recipe_path)
-recipe$package$name <- package_name
-recipe$package$version <- version
+recipe$context$version <- version
 
+# Get the base packages which are included in r-base, e.g. stats, grDevices
 base_packages <- installed.packages() %>% 
   as_tibble %>%
   filter(Priority == 'base') %>%
   pull(Package)
 
-additional_reqs <- c('r-base')
+additional_reqs <- c('r-base >= 4.3')
 
 versioned_import_reqs <- desc_file$get_deps() %>%
   filter(type == 'Imports') %>%
