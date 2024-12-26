@@ -1,38 +1,42 @@
 context:
   version: 0.1.0
   r_version: 4.3
-
 package:
-  name: r-serum-ig-pipeline-code
-  version: ${{ version }}
-
+  name: serumIgPipelineCode
+  version: 0.2.0
 source:
-  url: https://github.com/twillis209/serumIgPipelineCode/releases/download/v${{ version }}/serumIgPipelineCode_${{ version }}.tar.gz
+  url: https://github.com/twillis209/serumIgPipelineCode/releases/download/v${{ version
+    }}/serumIgPipelineCode_${{ version }}.tar.gz
   sha256: 902655c5dcbfc6f726578981642c19b926bfb30fef2542c96ec1e7ed23e8652d
-
 build:
   script: R CMD INSTALL --build .
-
 requirements:
   host:
-  - r-base >= ${{ r_version }}
-  - r-data.table >= 1.15
+  - r-base
+  - r-data.table (>= 1.15)
+  - r-dplyr
+  - r-ggplot2
+  - r-ggtext
+  - r-magrittr
+  - r-scales
   run:
-  - r-base >= ${{ r_version }}
-  - r-data.table >= 1.15
-
+  - r-base
+  - r-data.table (>= 1.15)
+  - r-dplyr
+  - r-ggplot2
+  - r-ggtext
+  - r-magrittr
+  - r-scales
 tests:
-  - script:
-    - Rscript -e "library('serumIgPipelineCode')"
-    - Rscript -e "library(serumIgPipelineCode); testthat::test_package('serumIgPipelineCode')"
-    requirements:
-      run:
-      - r-testthat
-
+- script:
+  - Rscript -e "library('serumIgPipelineCode')"
+  - Rscript -e "library(serumIgPipelineCode); testthat::test_package('serumIgPipelineCode')"
+  requirements:
+    run: r-testthat
 about:
   homepage: https://github.com/twillis209/serumIgPipelineCode
-  summary: "Ancillary code for the serum Ig paper pipeline"
-  description: |-
-    This package contains R code used to generate the results in the serum Ig paper.
+  summary: Ancillary code for the serum Ig paper pipeline
+  description: This package contains R code used to generate the results in the serum
+    Ig paper.
   license: MIT
   repository: https://github.com/twillis209/serumIgPipelineCode
