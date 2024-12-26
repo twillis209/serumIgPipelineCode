@@ -7,7 +7,7 @@ package:
 source:
   url: https://github.com/twillis209/serumIgPipelineCode/releases/download/v${{ version
     }}/serumIgPipelineCode_${{ version }}.tar.gz
-  sha256: 9832330917133831818f5b5d86e25840348315537543916520a00dc1d9d1f429
+  sha256: 0b9c845f8158e80e974f8a3aea40e954157c7143f81fb9ef19cd684ba225b8b6
 build:
   script: R CMD INSTALL --build .
 requirements:
