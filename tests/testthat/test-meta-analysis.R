@@ -1,3 +1,17 @@
+test_that("effect estimates are updated with one study for elementary values", {
+  dat <- data.table::data.table(
+    BETA = 1, SE = 0.1,
+    BETA.study1 = 2, SE.study1 = 0.1
+  )
+
+  update_meta_analysis_estimates(dat, "study1")
+  expect_equal(dat$BETA, 1.5)
+  expect_equal(dat$SE, 0.0707, tolerance = 1e-3)
+  expect_equal(dat$Z2, 450.1359, tolerance = 1e-3)
+  expect_equal(dat$P, 2.03e-45)
+})
+
+
 test_that("effect estimates are updated for a two-study analysis", {
   dat <- data.table::data.table(
     BETA = 1, SE = 0.1,
