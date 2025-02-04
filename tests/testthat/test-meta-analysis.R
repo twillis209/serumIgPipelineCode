@@ -59,3 +59,19 @@ test_that("effect estimates are updated for a three-study analysis with no initi
   expect_equal(dat$Z2, 230.0278, tolerance = 1e-3)
   expect_equal(dat$P, 5.88e-52)
 })
+
+# NB: numbers from Matti Pirinnen's GWAS course: https://www.mv.helsinki.fi/home/mjxpirin/GWAS_course/material/GWAS9.html
+test_that("matches ground truth from meta-analysis of real data from stroke GWAS compiled by Matti Pirinnen", {
+  dat <- data.table::data.table(
+    BETA.study1 = log(1.5), BETA.study2 = log(1.38), BETA.study3 = log(1.39),
+    SE.study1 = 0.0916, SE.study2 = 0.0846, SE.study3 = 0.0967
+  )
+
+  update_meta_analysis_estimates(dat, "study1")
+  update_meta_analysis_estimates(dat, "study2")
+  update_meta_analysis_estimates(dat, "study3")
+
+  expect_equal(dat$BETA, 0.3513526, tolerance = 1e-3)
+  expect_equal(dat$SE, 0.05227737, tolerance = 1e-3)
+  expect_equal(dat$P, 1.805663e-11, tolerance = 1e-3)
+})

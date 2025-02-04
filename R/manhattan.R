@@ -58,19 +58,20 @@ process_sumstats_for_manhattan <- function(dat, chr_col = "chromosome", bp_col =
 ##' @param processed_sumstats list containing data.table with updated chromosome and position values
 ##' @param palette character vector containing colors for chromosomes
 ##' @param title character string containing the title for the plot
+##' @param y_axis_break numeric vector containing coordinates at which to break the y-axis
 ##' @author Daniel Roelfs
 ##' @author Tom Willis
 ##' @importFrom ggplot2 ggplot geom_hline geom_point scale_x_continuous scale_color_manual scale_size_continuous scale_y_continuous labs theme ggtitle
 ##' @importFrom ggtext element_markdown
+##' @importFrom ggbreak scale_y_break
 ##' @export
-draw_manhattan <- function(processed_sumstats, palette = c("#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7"), title = '') {
+draw_manhattan <- function(processed_sumstats, palette = c("#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7"), title = '', y_axis_break = NULL) {
   gwas_data <- processed_sumstats$data
   axis_set <- processed_sumstats$axis_set
   ylim <- processed_sumstats$ylim
 
-  ggplot2::ggplot(ggplot2::aes(x = bp_cum, y = p, color = as.factor(chr)), data = gwas_data) +
+  pl <- ggplot2::ggplot(ggplot2::aes(x = bp_cum, y = p, color = as.factor(chr)), data = gwas_data) +
   ggplot2::geom_hline(yintercept = 5e-8, color = "grey40", linetype = "dashed") +
-  ggplot2::geom_hline(yintercept = 1e-5, color = "grey40", linetype = "dashed") +
   ggplot2::geom_point(size = 0.3) +
   ggplot2::scale_x_continuous(label = axis_set$chr, breaks = axis_set$center) +
   ggplot2::scale_color_manual(values = rep(palette, unique(length(axis_set$chr)))) +
@@ -86,6 +87,12 @@ draw_manhattan <- function(processed_sumstats, palette = c("#E69F00", "#56B4E9",
     axis.text.x = ggplot2::element_text(angle = 60, size = 8, vjust = 0.5)
   ) +
   ggplot2::ggtitle(title)
+
+  if(!is.null(y_axis_break)) {
+    pl <- pl + ggbreak::scale_y_break(y_axis_break)
+  }
+
+  pl
 }
 
 ##' -log transformation

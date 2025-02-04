@@ -8,7 +8,8 @@ draw_manhattan(
   processed_sumstats,
   palette = c("#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00",
     "#CC79A7"),
-  title = ""
+  title = "",
+  y_axis_break = NULL
 )
 }
 \arguments{
@@ -17,6 +18,8 @@ draw_manhattan(
 \item{palette}{character vector containing colors for chromosomes}
 
 \item{title}{character string containing the title for the plot}
+
+\item{y_axis_break}{numeric vector containing coordinates at which to break the y-axis}
 }
 \description{
 Code originally from Daniel Roelfs, modified by Tom Willis

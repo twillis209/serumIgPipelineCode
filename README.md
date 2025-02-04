@@ -25,6 +25,8 @@ This package is also available on `anaconda` on the `twillis209` channel as `r-s
 ```sh
 Rscript -e "devtools::document()
 Rscript -e "attachment::att_amend_desc()"
+# Want to run the tests as part of the rattler-build process, too, hence redundant source code in the destination directory
+cp -r tests inst/tests
 R CMD build .
 R CMD check serumIgPipelinecode_x.tar.gz
 ```
@@ -41,7 +43,9 @@ Remember to upload the package archive :
 gh release upload --clobber v0.x.0 serumIgPipelineCode_0.x.0.tar.gz
 ```
 
-GitHub will include the source code.
+GitHub will include the source code. 
+
+Note that it's necessary to create releases so that `rattler` pulls the source when building the artifact.
 
 #### Building `conda` package
 
