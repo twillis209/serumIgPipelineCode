@@ -1,5 +1,5 @@
 context:
-  version: 0.2.1
+  version: 0.2.2
   r_version: 4.3
 package:
   name: r-serum-ig-pipeline-code
@@ -7,7 +7,7 @@ package:
 source:
   url: https://github.com/twillis209/serumIgPipelineCode/releases/download/v${{ version
     }}/serumIgPipelineCode_${{ version }}.tar.gz
-  sha256: 0b9c845f8158e80e974f8a3aea40e954157c7143f81fb9ef19cd684ba225b8b6
+  sha256: d6b02cd7b6b25fb45a7809f5be5d1a677bfeac236330bb1c49a22bf4b0c6f5dd
 build:
   script: R CMD INSTALL --build .
 requirements:
@@ -17,6 +17,7 @@ requirements:
   - r-dplyr
   - r-ggplot2
   - r-ggtext
+  - r-ggbreak
   - r-magrittr
   - r-scales
   run:
@@ -25,6 +26,7 @@ requirements:
   - r-dplyr
   - r-ggplot2
   - r-ggtext
+  - r-ggbreak
   - r-magrittr
   - r-scales
 tests:
