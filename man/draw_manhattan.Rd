@@ -9,6 +9,7 @@ draw_manhattan(
   palette = c("#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00",
     "#CC79A7"),
   title = "",
+  y_limits = c(1, 1e-10),
   y_axis_break = NULL
 )
 }
@@ -18,6 +19,8 @@ draw_manhattan(
 \item{palette}{character vector containing colors for chromosomes}
 
 \item{title}{character string containing the title for the plot}
+
+\item{y_limits}{limits for y axis}
 
 \item{y_axis_break}{numeric vector containing coordinates at which to break the y-axis}
 }

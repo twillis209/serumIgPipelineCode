@@ -59,13 +59,14 @@ process_sumstats_for_manhattan <- function(dat, chr_col = "chromosome", bp_col =
 ##' @param palette character vector containing colors for chromosomes
 ##' @param title character string containing the title for the plot
 ##' @param y_axis_break numeric vector containing coordinates at which to break the y-axis
+##' @param y_limits limits for y axis
 ##' @author Daniel Roelfs
 ##' @author Tom Willis
 ##' @importFrom ggplot2 ggplot geom_hline geom_point scale_x_continuous scale_color_manual scale_size_continuous scale_y_continuous labs theme ggtitle
 ##' @importFrom ggtext element_markdown
 ##' @importFrom ggbreak scale_y_break
 ##' @export
-draw_manhattan <- function(processed_sumstats, palette = c("#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7"), title = '', y_axis_break = NULL) {
+draw_manhattan <- function(processed_sumstats, palette = c("#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7"), title = '', y_limits = c(1, 1e-10), y_axis_break = NULL) {
   gwas_data <- processed_sumstats$data
   axis_set <- processed_sumstats$axis_set
   ylim <- processed_sumstats$ylim
@@ -76,7 +77,7 @@ draw_manhattan <- function(processed_sumstats, palette = c("#E69F00", "#56B4E9",
   ggplot2::scale_x_continuous(label = axis_set$chr, breaks = axis_set$center) +
   ggplot2::scale_color_manual(values = rep(palette, unique(length(axis_set$chr)))) +
   ggplot2::scale_size_continuous(range = c(0.5, 3)) +
-  scale_y_neglog10() +
+  scale_y_neglog10(limits = y_limits) +
   ggplot2::labs(x = NULL, 
        y = "-log<sub>10</sub>(p)") +
   ggplot2::theme( 
